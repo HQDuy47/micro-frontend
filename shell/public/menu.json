@@ -1,0 +1,32 @@
+[
+  {
+    "code": "reportGroup",
+    "moduleName": "Report",
+    "subModuleList": [
+      {
+        "code": "consentStatusReport",
+        "moduleName": "Consent status report",
+        "remote": "report",
+        "remoteEntry": "http://localhost:5001/remoteEntry.js",
+        "exposed": "./ReportPage",
+        "roles": ["admin", "viewer"],
+        "actions": ["VIEW", "EXPORT"]
+      }
+    ]
+  },
+  {
+    "code": "accessManagement",
+    "moduleName": "Access Management",
+    "subModuleList": [
+      {
+        "code": "users",
+        "moduleName": "User management",
+        "remote": "users",
+        "remoteEntry": "http://localhost:5002/remoteEntry.js",
+        "exposed": "./UsersPage",
+        "roles": ["admin"],
+        "actions": ["VIEW", "CREATE", "DELETE"]
+      }
+    ]
+  }
+]
