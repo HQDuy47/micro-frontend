@@ -16,32 +16,36 @@ export default function ReportPage({ role, can }: Props) {
             report v1 · build lúc {__BUILD_TIME__} · vai trò: {role}
           </p>
         </div>
-        {can("EXPORT") && <button className="btn btn-primary">Export</button>}
+        {can("EXPORT") && (
+          <button className="btn btn-primary">Xuất file</button>
+        )}
       </div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Mã KH</th>
-            <th>Tên</th>
-            <th>Trạng thái</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map(([id, name, status]) => (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{name}</td>
-              <td>
-                <span
-                  className={`badge ${status === "Đã rút" ? "badge-danger" : "badge-success"}`}
-                >
-                  {status}
-                </span>
-              </td>
+      <div className="table-wrap">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Mã KH</th>
+              <th>Tên</th>
+              <th>Trạng thái</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map(([id, name, status]) => (
+              <tr key={id}>
+                <td className="mono">{id}</td>
+                <td>{name}</td>
+                <td>
+                  <span
+                    className={`badge ${status === "Đã rút" ? "badge-danger" : "badge-success"}`}
+                  >
+                    {status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

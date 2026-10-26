@@ -22,30 +22,10 @@
   --mono: ui-monospace, Consolas, monospace;
 
   font: 14px/1.5 var(--sans);
-  color-scheme: light dark;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1115;
-    --surface: #171a21;
-    --surface-2: #1e222b;
-    --text: #a5acb8;
-    --text-h: #f3f4f6;
-    --muted: #6b7280;
-    --border: #2a2f3a;
-    --accent: #818cf8;
-    --accent-hover: #a5b4fc;
-    --accent-bg: rgba(129, 140, 248, 0.12);
-    --danger: #f87171;
-    --danger-bg: rgba(248, 113, 113, 0.12);
-    --success: #34d399;
-    --success-bg: rgba(52, 211, 153, 0.12);
-    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  }
 }
 
 *,
@@ -87,6 +67,9 @@ select {
 }
 
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,6 +97,10 @@ select {
 }
 
 .sidebar {
+  position: sticky;
+  top: 56px;
+  height: calc(100svh - 56px);
+  overflow-y: auto;
   padding: 16px 12px;
   background: var(--surface);
   border-right: 1px solid var(--border);
@@ -173,6 +160,8 @@ select {
     grid-template-columns: 1fr;
   }
   .sidebar {
+    position: static;
+    height: auto;
     border-right: 0;
     border-bottom: 1px solid var(--border);
   }
@@ -189,7 +178,7 @@ select {
 
 .page-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 16px;
@@ -259,6 +248,12 @@ select {
   color: var(--text-h);
 }
 
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -269,6 +264,11 @@ select {
   padding: 10px 12px;
   border-bottom: 1px solid var(--border);
   text-align: left;
+  white-space: nowrap;
+}
+
+.table td {
+  color: var(--text-h);
 }
 
 .table th {
@@ -286,24 +286,14 @@ select {
   border-bottom: 0;
 }
 
-.list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+.table .actions {
+  width: 1%;
+  text-align: right;
 }
 
-.list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px;
-  color: var(--text-h);
-}
-
-.list li + li {
-  border-top: 1px solid var(--border);
+.mono {
+  font-family: var(--mono);
+  font-size: 13px;
 }
 
 .badge {

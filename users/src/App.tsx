@@ -1,7 +1,11 @@
 import UsersPage from "./UsersPage";
 
 function App() {
-  return <UsersPage role="admin" can={() => true} />;
+  return (
+    <main className="content">
+      <UsersPage role="admin" can={() => true} />
+    </main>
+  );
 }
 
 export default App;
